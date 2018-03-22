@@ -11,16 +11,8 @@ const logSchema = new Schema({
   "msg": String,
   "time": String,
   "v": Number
-},{collection:"log"})
+},{collection:"log", strict: false});
 
 const logModel = db.model('logModel', logSchema);
-
-export async function get(id?: number){
-  if(!!id){
-    
-  }else{
-
-  }
-} 
 
 export default logModel;

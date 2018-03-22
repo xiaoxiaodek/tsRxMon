@@ -7,7 +7,7 @@ const db = mongoose.createConnection(config.get<string>('mongodb.url'), config.g
 db.on('error', console.error.bind(console, 'mongodb connection error'));
 db.once('open', function(){
 
-  console.log('mongodb connected');
+  console.log('mongodb connected ' + config.get<string>('mongodb.url'));
   // console.log(logModel.findOne({name:"wss"}));
 
 })
