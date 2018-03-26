@@ -18,7 +18,7 @@ export class LogController {
      console.log(err);
      return '查询出错了';
    }
-    return "This action returns logs " + result;
+    return   result;
   }
 
   @Get("/log/:name")
@@ -34,14 +34,14 @@ export class LogController {
       console.log(err);
       return '查询出错!';
     } 
-    return "This action returns log #" + result;
+    return result;
   }
  
   @Post("/log")
   async post(@Body() log: any) {
     let result = {};
     try {
-      result = await logModel.find({ name: NAME }, (err, res) => {
+      result = await logModel.insertMany(log, (err, res) => {
         if (err !== null) {
           throw (err);
         }
@@ -53,11 +53,11 @@ export class LogController {
     return "Saving log...";
   }
 
-  @Put("/log/:id")
-  async put(@Param("id") id: number, @Body() log: any) {
+  @Put("/log/:name")
+  async put(@Param("name") name: string, @Body() log: any) {
     let result = {};
     try {
-      result = await logModel.find({ name: NAME }, (err, res) => {
+      result = await logModel.updateOne({ name: name }, log, (err, row) => {
         if (err !== null) {
           throw (err);
         }
@@ -70,10 +70,10 @@ export class LogController {
   }
 
   @Delete("/log/:name")
-  async remove(@Param("name") NAME: number) {
+  async remove(@Param("name") NAME: string) {
     let result = {};
     try {
-      result = await logModel.find({ name: NAME }, (err, res) => {
+      result = await logModel.deleteOne({ name: NAME }, (err) => {
         if (err !== null) {
           throw (err);
         }
