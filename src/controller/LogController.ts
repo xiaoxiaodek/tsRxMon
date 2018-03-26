@@ -54,7 +54,7 @@ export class LogController {
   }
 
   @Put("/log/:id")
-  put(@Param("id") id: number, @Body() log: any) {
+  async put(@Param("id") id: number, @Body() log: any) {
     let result = {};
     try {
       result = await logModel.find({ name: NAME }, (err, res) => {
@@ -69,8 +69,19 @@ export class LogController {
     return "Updating a log...";
   }
 
-  @Delete("/log/:id")
-  remove(@Param("id") id: number) {
+  @Delete("/log/:name")
+  async remove(@Param("name") NAME: number) {
+    let result = {};
+    try {
+      result = await logModel.find({ name: NAME }, (err, res) => {
+        if (err !== null) {
+          throw (err);
+        }
+      })
+    } catch (err) {
+      console.log(err);
+      return '查询出错!';
+    } 
     return "Removing log...";
   }
 
