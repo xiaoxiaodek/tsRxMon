@@ -6,7 +6,7 @@ import * as session from 'koa-session';
 import 'reflect-metadata';
 import {useKoaServer} from 'routing-controllers';
 
-import {LogController} from './controller/LogController';
+import {LogController} from './controllers/LogController';
 const app = new Koa();
 const port = config.get<string>('serverPort');
 // middlewares

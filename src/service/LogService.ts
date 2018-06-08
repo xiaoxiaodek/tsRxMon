@@ -1,2 +1,1 @@
-import logModel from '../model/log';
-
+import Models from '../models/models';

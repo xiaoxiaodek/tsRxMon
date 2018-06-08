@@ -9,7 +9,7 @@
     "pretest": "cd test && tsc",
     "test": "NODE_ENV=development nyc ava build_test/**/*.test.js --color",
     "start": "tsc && NODE_ENV=development nodemon --inspect build/app.js",
-    "predev": "tsc",
+    "predev": "tsc -w &",
     "watch": "tsc --watch & NODE_ENV=development nodemon --inspect build/app.js",
     "dev": "./node_modules/.bin/nodemon --inspect build/app.js",
     "prd": "pm2 start bin/www"

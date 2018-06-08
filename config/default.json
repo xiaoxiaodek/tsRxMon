@@ -1,0 +1,50 @@
+{
+    "serverPort": 37570,
+    "mongodb": {
+      // url: 'mongodb://127.0.0.1:27017/logs',
+      "url": "mongodb://172.17.0.1:27017/logs",
+      "options": {
+
+        "poolSize": 20,
+        "connectTimeoutMS": 10000,
+        "autoReconnect":20000,
+        "keepAlive":1
+      }
+    },
+    "leveldb":{
+      "path": "./leveldb"
+    },
+    "errors": {
+      "ProgramerException": {
+        "code": "E300",
+        "message": "系统程序执行错误"
+      },
+      "ParamsInvalid": {
+        "code": "E302",
+        "message": "数据验证失败"
+      },
+      "DataIsNull": {
+        "code": "E303",
+        "message": "数据为空"
+      },
+      "DataException": {
+        "code": "E304",
+        "message": "数据异常"
+      },
+      "UrlInvalid": {
+        "code": "E305",
+        "message": "非法url"
+      },
+      "User" :[
+        {
+        "name": "NameOrPasswordError",
+        "code": "E52001",
+        "message": "用户名或密码错误"
+       }, 
+       {
+        "name": "HasNoPrivilege",
+        "code": "E52002",
+        "message": "用户没有权限，请自行分配"
+      }]
+    }
+}
