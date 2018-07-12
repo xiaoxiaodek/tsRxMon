@@ -11,4 +11,4 @@ db.once('open', function(){
   // console.log(logModel.findOne({name:"wss"}));
 
 })
-export default db;  
+export default db;

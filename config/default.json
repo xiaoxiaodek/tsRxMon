@@ -1,7 +1,6 @@
 {
     "serverPort": 37570,
     "mongodb": {
-      // url: 'mongodb://127.0.0.1:27017/logs',
       "url": "mongodb://172.17.0.1:27017/logs",
       "options": {
 
@@ -11,6 +10,17 @@
         "keepAlive":1
       }
     },
+    "redis":{
+      "host": "127.0.0.1",
+      "port":6379,
+      "db": 0,
+      "enable_offline_queue": false,
+      "connect_timeout": 1800000
+    },
+    // 最大重连次数
+    "redisMaxReconnectCount": 20,
+    // 最大重连时长
+    "redisMaxReconnectTime": 1800000, // ms
     "leveldb":{
       "path": "./leveldb"
     },

@@ -1,5 +1,3 @@
-import { timestamp } from "aws-sdk/clients/health";
-
 export class User {
     name: string;
     password: string;
@@ -14,8 +12,8 @@ export class User {
         this.name = o.name;
         this.password = o.password;
         this.salt = o.salt;
-        this.email = o.email;
-        this.avatar = o.avatar;
+        this.email = o.email || '';
+        this.avatar = o.avatar || '';
         this.level = o.level;
         this.msg = o.msg;
         this.createTime = o.createTime;

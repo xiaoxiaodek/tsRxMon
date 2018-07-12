@@ -1,8 +1,10 @@
-import * as schema from '../schemas/schemas';
+import * as schema from '../schemas/index';
 import db from '../db/mongo';
 import { each } from 'lodash';
 import { Model, Document } from 'mongoose';
-
+/**
+ * dto
+ */
 let models: { [s: string]: Model<Document>} = {};
 each(schema, (v, k) => {
     let key: string = k.replace('Schema', 'Model');

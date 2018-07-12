@@ -1,1 +1,1 @@
-import Models from '../models/models';
+import Models from '../models/index';

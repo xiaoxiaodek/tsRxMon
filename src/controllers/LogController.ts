@@ -1,6 +1,6 @@
 import { Controller, Param, Body, Get, Post, Put, Delete } from "routing-controllers";
 // import logModel from '../model/log';
-import models from '../models/models';
+import models from '../models/index';
 import { throws } from "assert";
 import logger from "../core/logger";
 
@@ -21,12 +21,24 @@ export class LogController {
      console.log(err);
      return '查询出错了';
    }
-   logger.i('asd');
+    logger.i(JSON.stringify({
+      "name": "gds-err",
+      "hostname": "localhost",
+      "pid": 11,
+      "level": 10,
+      "tagList": [
+        "fef",
+        "fasd"
+      ],
+      "msg": "unknow Error",
+      "time": "20180603",
+      "v": 333
+    }));
     return   result;
   }
 
   @Get("/log/:keyword")
-  async getOne(@Param("keyword") NAME: String) {
+  async getOne(@Param("keyword") NAME: string) {
     let result = {};
     try {
       result = await logModel.find({ name: NAME }, (err: Error, res: any) => {

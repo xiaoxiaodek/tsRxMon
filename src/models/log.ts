@@ -1,4 +1,3 @@
-
 export class Log {
   name: string;
   hostname: string;

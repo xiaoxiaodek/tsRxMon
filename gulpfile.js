@@ -8,5 +8,9 @@ gulp.task('clearDir', function(callback){
 })
 gulp.task('default', ['clearDir'], function(){
     gulp.src(['package.json','process.*.json'])
-    .pipe(gulp.dest('build/'))
+    .pipe(gulp.dest('build/'));
+    gulp.src('public/**/*')
+    .pipe(gulp.dest('build/public/'));
+    gulp.src('config/**/*')
+    .pipe(gulp.dest('build/config/'))
 })

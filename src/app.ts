@@ -3,6 +3,7 @@ import * as config from 'config';
 import * as bodyParser from 'koa-bodyparser';
 import * as logger from 'koa-logger';
 import * as session from 'koa-session';
+import client from './core/redis';
 import 'reflect-metadata';
 import {useKoaServer} from 'routing-controllers';
 
@@ -19,7 +20,6 @@ session(app);
 // routing-controller
 useKoaServer(app, { controllers: [LogController]});
 app.use(require('koa-static')(__dirname + '/public'));
-
 // logger
 app.use(async (ctx, next) => {
   const start: number = new Date().getTime();
@@ -35,5 +35,7 @@ app.listen(port, () => {
 app.on('error', (err: any, ctx: Koa.Context) => {
   console.error('server error', err, ctx)
 });
-
+client.on('connect', ()=>{
+  console.log(`redis连接成功，地址${config.get('redis.host')}`)
+})
 // module.exports = app;
