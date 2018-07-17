@@ -7,7 +7,7 @@ import client from './core/redis';
 import 'reflect-metadata';
 import {useKoaServer} from 'routing-controllers';
 
-import {LogController} from './controllers/LogController';
+import MyControllers from './controllers/index';
 const app = new Koa();
 const port = config.get<string>('serverPort');
 // middlewares
@@ -18,7 +18,7 @@ app.use(logger());
 // koa-session
 session(app);
 // routing-controller
-useKoaServer(app, { controllers: [LogController]});
+useKoaServer(app, { controllers: MyControllers});
 app.use(require('koa-static')(__dirname + '/public'));
 // logger
 app.use(async (ctx, next) => {

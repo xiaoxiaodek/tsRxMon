@@ -1,7 +1,17 @@
-import { Controller, Param, Body, Get, Post, Put, Delete } from "routing-controllers";
+import {
+  Controller,
+  Param,
+  Body,
+  Get,
+  Post,
+  Put,
+  Delete
+} from "routing-controllers";
 // import logModel from '../model/log';
 import models from '../models/index';
-import { throws } from "assert";
+import {
+  throws
+} from "assert";
 import logger from "../core/logger";
 
 const logModel = models.logModel;
@@ -9,18 +19,18 @@ const logModel = models.logModel;
 export class LogController {
 
   @Get("/log")
- async  getAll() {
-   let result = {};
-   try {
-     result = await logModel.find({}, (err: Error, res : any) => {
-       if(err !== null){
-         throw(err);
-       }
-     }).lean();
-   } catch (err) {
-     console.log(err);
-     return '查询出错了';
-   }
+  async getAll() {
+    let result = {};
+    try {
+      result = await logModel.find({}, (err: Error, res: any) => {
+        if (err !== null) {
+          throw (err);
+        }
+      }).lean();
+    } catch (err) {
+      console.log(err);
+      return '查询出错了';
+    }
     logger.i(JSON.stringify({
       "name": "gds-err",
       "hostname": "localhost",
@@ -34,14 +44,16 @@ export class LogController {
       "time": "20180603",
       "v": 333
     }));
-    return   result;
+    return result;
   }
 
   @Get("/log/:keyword")
   async getOne(@Param("keyword") NAME: string) {
     let result = {};
     try {
-      result = await logModel.find({ name: NAME }, (err: Error, res: any) => {
+      result = await logModel.find({
+        name: NAME
+      }, (err: Error, res: any) => {
         if (err !== null) {
           throw (err);
         }
@@ -49,10 +61,10 @@ export class LogController {
     } catch (err) {
       console.log(err);
       return '查询出错!';
-    } 
+    }
     return result;
   }
- 
+
   // @Post("/log")
   // async post(@Body() log: any) {
   //   let result = {};

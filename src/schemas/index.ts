@@ -20,6 +20,7 @@ const commentSchema = new Schema({
     'commentTime': String,
     'commentText': String,
     'pictureUrl': String,
+    'tagId': Number
 }, { collection: "comment", strict: false });
 
 const userSchema = new Schema({
@@ -31,7 +32,8 @@ const userSchema = new Schema({
     'level': String, 
     'msg': String, 
     'createTime': String,
-    'updateTime': String
+    'updateTime': String,
+    'tag_id': Number
 }, { collection: "user", strict: false });
 
 const tagSchema = new Schema({
